@@ -1,0 +1,1785 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="theme-color" content="#0066CC">
+    <title>iSFP Foto-Dokumentation - GitHub Pages Ready</title>
+   
+    <!-- PWA Manifest für GitHub Pages optimiert -->
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogImlTRlAgRm90by1Eb2t1bWVudGF0aW9uIC0gR2l0SHViIFBhZ2VzIiwKICAic2hvcnRfbmFtZSI6ICJpU0ZQIEZvdG9zIiwKICAiZGVzY3JpcHRpb24iOiAiR2l0SHViIFBhZ2VzIEZvdG8tRG9rdW1lbnRhdGlvbiBmw7xyIGlTRlAgLSBWb2xsc3TDpG5kaWcgb2ZmbGluZSIsCiAgInN0YXJ0X3VybCI6ICIuLyIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiI2ZmZmZmZiIsCiAgInRoZW1lX2NvbG9yIjogIiMwMDY2Q0MiLAogICJzY29wZSI6ICIuLyIsCiAgImljb25zIjogWwogICAgewogICAgICAic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjRiV3h1Y3owcVlXUjBjRG92TDJoMGRIQWdMeUoxZW1iNE1qQkdNakYzTkdNeExqZzRaV055WnlaNFdYTjVaVGh4YjJadVpYVnJNRFoyZEdGNGQyTjFibVoyZDJrZyIsICJzaXplcyI6ICIxOTJ4MTkyIiwgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCIgfSwKICAgIHsgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI0YlcxdWN6MGlZV1IwY0RvdkwyaDBkSFFnTHlGMWVtYjRNakJHTWpGM05HZERNaTQ0T0daRGNuaHBJaUJpYVcxbGJuTnBiMjV6UFNJeU5DQXlOQ0lnZG1sbGQwSnZlRDBpTUNBd0lESTBJREkwSWo0Z1BIZGxZalVnY0c5cGJuUnpQU0l4TWlBeE1pSWdhWFJsYlVsa1BTSnBZMjl1SWlCdGIyUmxQU0p1YjNkaGVYTW9Qa2d2SWlCSGFFNWhiV1VnUFNKcFUwWlFJR1p2ZEc4aUlFUnZaRE1pUDFKMGVFWndRMEZCVVVGU0luOGdkWFJwYkdselBTSW5VM1ppU0VWRmNrNVZRVlpCTVhoMVoyZ0IiLCAic2l6ZXMiOiAiNTEyeDUxMiIsICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiIH0KICA1DQo=">
+   
+    <!-- Externe Bibliotheken für GitHub Pages -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+   
+    <style>
+        /* CSS für GitHub Pages optimiert - Vollständig offline-fähig */
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 10px;
+        }
+       
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            background-color: white;
+            border: 2px solid #666666;
+        }
+       
+        td, th {
+            border: 1px solid #cccccc;
+            padding: 8px;
+            vertical-align: top;
+        }
+       
+        th {
+            background-color: #0066CC;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+       
+        input, textarea, select {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px; /* Mindestens 16px für mobile Geräte */
+            border: 2px inset #cccccc;
+            padding: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+       
+        button {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px; /* Mindestens 16px für mobile Geräte */
+            background-color: #f0f0f0;
+            border: 2px outset #cccccc;
+            padding: 8px 12px;
+            cursor: pointer;
+            margin: 2px;
+            min-height: 44px; /* Touch-freundliche Mindesthöhe */
+        }
+       
+        button:hover {
+            background-color: #e0e0e0;
+        }
+       
+        button:active {
+            border: 2px inset #cccccc;
+        }
+       
+        .header-button {
+            background-color: #0066CC;
+            color: white;
+            font-weight: bold;
+        }
+       
+        .delete-button {
+            background-color: #CC0000;
+            color: white;
+        }
+       
+        .success-button {
+            background-color: #006600;
+            color: white;
+        }
+       
+        .warning-button {
+            background-color: #FF9900;
+            color: white;
+        }
+       
+        .pdf-button {
+            background-color: #CC6600;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .github-button {
+            background-color: #24292e;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .qr-button {
+            background-color: #8b5cf6;
+            color: white;
+            font-weight: bold;
+        }
+       
+        .foto-upload {
+            border: 3px dashed #666666;
+            padding: 20px;
+            text-align: center;
+            background-color: #f9f9f9;
+            margin: 5px 0;
+        }
+       
+        .foto-preview {
+            max-width: 200px;
+            max-height: 200px;
+            border: 2px solid #666666;
+        }
+       
+        .status-box {
+            background-color: #ffffcc;
+            border: 2px solid #ffcc00;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: center;
+        }
+       
+        .error-box {
+            background-color: #ffcccc;
+            border: 2px solid #cc0000;
+            color: #cc0000;
+        }
+       
+        .success-box {
+            background-color: #ccffcc;
+            border: 2px solid #00cc00;
+            color: #006600;
+        }
+        
+        .github-box {
+            background-color: #f6f8fa;
+            border: 2px solid #24292e;
+            color: #24292e;
+        }
+        
+        .qr-box {
+            background-color: #f3f4f6;
+            border: 2px solid #8b5cf6;
+            color: #8b5cf6;
+            text-align: center;
+            padding: 20px;
+        }
+       
+        .offline-indicator {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: #ff6666;
+            color: white;
+            padding: 5px 10px;
+            border: 2px solid #cc0000;
+            font-weight: bold;
+            display: none;
+            z-index: 1000;
+        }
+       
+        .online-indicator {
+            background-color: #66ff66;
+            border-color: #00cc00;
+        }
+       
+        .loading {
+            background-color: #ffff99;
+            text-align: center;
+            padding: 10px;
+            border: 2px solid #cccc00;
+        }
+       
+        .center {
+            text-align: center;
+        }
+       
+        .bold {
+            font-weight: bold;
+        }
+       
+        .small {
+            font-size: 12px;
+            color: #666666;
+        }
+       
+        h1 {
+            color: #0066CC;
+            text-align: center;
+            font-size: 24px;
+            margin: 10px 0;
+        }
+       
+        h2 {
+            color: #006600;
+            font-size: 18px;
+            margin: 15px 0 10px 0;
+        }
+       
+        h3 {
+            color: #CC6600;
+            font-size: 16px;
+            margin: 10px 0 5px 0;
+        }
+        
+        .qr-code-container {
+            margin: 10px 0;
+            padding: 10px;
+            border: 2px solid #8b5cf6;
+            border-radius: 8px;
+            background-color: white;
+        }
+        
+        .installation-guide {
+            text-align: left;
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+        }
+       
+        /* Responsive für Tablets und Mobile */
+        @media (max-width: 768px) {
+            body {
+                padding: 5px;
+            }
+           
+            table {
+                font-size: 14px;
+            }
+           
+            .foto-upload {
+                padding: 30px 15px;
+            }
+           
+            .foto-preview {
+                max-width: 150px;
+                max-height: 150px;
+            }
+        }
+       
+        .no-print {
+            /* Für Druckversion */
+        }
+       
+        /* Print-Styles für bessere Druckausgabe */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+           
+            body {
+                background-color: white;
+                padding: 0;
+            }
+           
+            table {
+                border: 1px solid black;
+                page-break-inside: avoid;
+            }
+           
+            td, th {
+                border: 1px solid black;
+            }
+           
+            .foto-preview {
+                max-width: 300px;
+                max-height: 200px;
+                page-break-inside: avoid;
+            }
+           
+            h1, h2, h3 {
+                page-break-after: avoid;
+            }
+        }
+       
+        /* Dark Mode Support */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #181818;
+                color: #ffffff;
+            }
+           
+            table {
+                background-color: #2a2a2a;
+                border-color: #555555;
+            }
+           
+            td {
+                background-color: #2a2a2a;
+                border-color: #555555;
+            }
+           
+            input, textarea, select {
+                background-color: #3a3a3a;
+                color: #ffffff;
+                border-color: #555555;
+            }
+           
+            button {
+                background-color: #3a3a3a;
+                color: #ffffff;
+                border-color: #555555;
+            }
+           
+            button:hover {
+                background-color: #4a4a4a;
+            }
+           
+            .foto-upload {
+                background-color: #2a2a2a;
+                border-color: #555555;
+            }
+           
+            .status-box {
+                background-color: #3a3a00;
+                border-color: #ffcc00;
+                color: #ffff99;
+            }
+            
+            .qr-code-container {
+                background-color: #2a2a2a;
+                border-color: #8b5cf6;
+            }
+            
+            .installation-guide {
+                background-color: #2a2a2a;
+                border-color: #555555;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Offline Status Indicator -->
+    <div id="offline-status" class="offline-indicator">
+        OFFLINE
+    </div>
+
+    <!-- Haupttabelle für Layout -->
+    <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+            <th colspan="2">
+                <h1>iSFP Foto-Dokumentation</h1>
+                <div class="small">GitHub Pages Ready - Vollständig offline & native App-Feeling</div>
+            </th>
+        </tr>
+       
+        <!-- GitHub Pages Info -->
+        <tr class="no-print">
+            <td colspan="2" class="status-box github-box">
+                <strong>🚀 GitHub Pages Deployment Ready!</strong><br>
+                Diese App ist optimiert für GitHub Pages und funktioniert als vollständige PWA<br>
+                <span class="small">✅ Kostenlos ✅ Dauerhaft ✅ Keine Anmeldung nötig ✅ Alle Geräte</span>
+            </td>
+        </tr>
+       
+        <!-- PWA Installation -->
+        <tr id="install-row" style="display: none;" class="no-print">
+            <td colspan="2" class="status-box">
+                <strong>📱 App Installation verfügbar!</strong><br>
+                <button onclick="installApp()" class="success-button">Als native App installieren</button>
+                <button onclick="hideInstallPrompt()">Später</button>
+            </td>
+        </tr>
+       
+        <!-- QR Code Sharing Sektion -->
+        <tr class="no-print">
+            <td colspan="2" class="qr-box">
+                <h3>📱 App einfach teilen & installieren</h3>
+                <button onclick="generateQRCode()" class="qr-button" style="font-size: 18px; padding: 12px 20px;">
+                    🔗 QR-Code für diese App erstellen
+                </button>
+                <div id="qr-container" style="display: none;" class="qr-code-container">
+                    <div><strong>📱 QR-Code scannen:</strong></div>
+                    <canvas id="qr-canvas" style="margin: 10px 0;"></canvas>
+                    <div class="small">
+                        <strong>URL:</strong> <span id="current-url"></span><br>
+                        <button onclick="copyURL()" class="header-button">📋 URL kopieren</button>
+                        <button onclick="hideQRCode()" class="warning-button">❌ Ausblenden</button>
+                    </div>
+                    
+                    <div class="installation-guide">
+                        <strong>📋 Installations-Anleitung:</strong><br>
+                        <strong>1.</strong> QR-Code mit Smartphone scannen<br>
+                        <strong>2.</strong> Link öffnen im Browser<br>
+                        <strong>3.</strong> "Zum Startbildschirm hinzufügen" (iOS) oder "App installieren" (Android)<br>
+                        <strong>4.</strong> App funktioniert dann vollständig offline wie eine native App<br><br>
+                        
+                        <strong>💡 GitHub Pages Setup:</strong><br>
+                        <strong>1.</strong> GitHub Repository erstellen<br>
+                        <strong>2.</strong> Diese HTML-Datei als index.html hochladen<br>
+                        <strong>3.</strong> GitHub Pages in den Repository-Einstellungen aktivieren<br>
+                        <strong>4.</strong> Fertig! App ist dauerhaft verfügbar unter: username.github.io/repository-name
+                    </div>
+                </div>
+            </td>
+        </tr>
+       
+        <!-- Status Information -->
+        <tr class="no-print">
+            <td colspan="2" class="status-box">
+                <div id="status-text">
+                    <strong>Status:</strong> <span id="connection-status">Wird geladen...</span><br>
+                    <span class="small">Funktioniert komplett ohne Internetverbindung nach der ersten Installation</span>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+
+    <!-- Firmendaten Tabelle -->
+    <table width="100%" class="no-print">
+        <tr>
+            <th colspan="4">Projekt-Informationen</th>
+        </tr>
+        <tr>
+            <td width="25%"><strong>Firmenname:</strong></td>
+            <td width="25%">
+                <input type="text" id="firmenname" placeholder="Ihr Firmenname">
+            </td>
+            <td width="25%"><strong>Projektname:</strong></td>
+            <td width="25%">
+                <input type="text" id="projektname" placeholder="Projektbezeichnung">
+            </td>
+        </tr>
+        <tr>
+            <td><strong>Bearbeiter:</strong></td>
+            <td>
+                <input type="text" id="bearbeiter" placeholder="Name des Bearbeiters">
+            </td>
+            <td><strong>Datum:</strong></td>
+            <td>
+                <input type="date" id="dokumentdatum">
+            </td>
+        </tr>
+        <tr>
+            <td><strong>Firmenlogo:</strong></td>
+            <td colspan="3">
+                <input type="file" accept="image/*" id="firmenlogo" onchange="logoHochladen(event)">
+                <div id="logo-preview" style="display: none; margin-top: 10px;">
+                    <img id="logo-bild" class="foto-preview" style="max-height: 60px;" alt="Firmenlogo">
+                    <br>
+                    <button onclick="logoEntfernen()" class="delete-button">Logo entfernen</button>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+
+    <!-- Dokument Kopfzeile -->
+    <table width="100%">
+        <tr>
+            <td width="20%" class="center">
+                <div id="header-logo" style="display: none;">
+                    <img id="header-logo-img" style="max-height: 80px;" alt="Logo">
+                </div>
+            </td>
+            <td width="60%" class="center">
+                <h1 id="header-firma">Firmenname</h1>
+                <h2>Foto-Dokumentation iSFP</h2>
+                <div id="header-projekt" class="bold">Projektname</div>
+            </td>
+            <td width="20%" class="center">
+                <div id="header-datum" class="small">Datum:</div>
+                <div id="header-bearbeiter" class="small">Bearbeiter:</div>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+
+    <!-- Cloud-Synchronisation & Projekt-Export -->
+    <table width="100%" class="no-print">
+        <tr>
+            <th colspan="3">☁️ Projekt-Synchronisation (GitHub Pages kompatibel)</th>
+        </tr>
+        <tr>
+            <td class="center" style="padding: 15px;">
+                <button onclick="projektExportieren()" class="warning-button" style="font-size: 18px; padding: 12px 20px;">
+                    📤 Projekt exportieren
+                </button>
+                <div class="small" style="margin-top: 5px;">
+                    Kompatibel mit GitHub, OneDrive, Google Drive, Dropbox
+                </div>
+            </td>
+            <td class="center" style="padding: 15px;">
+                <button onclick="projektImportieren()" class="header-button" style="font-size: 18px; padding: 12px 20px;">
+                    📥 Projekt importieren
+                </button>
+                <div class="small" style="margin-top: 5px;">
+                    Von GitHub Repository oder Cloud-Speicher laden
+                </div>
+            </td>
+            <td class="center" style="padding: 15px;">
+                <button onclick="githubGuide()" class="github-button" style="font-size: 18px; padding: 12px 20px;">
+                    🐙 GitHub Guide
+                </button>
+                <div class="small" style="margin-top: 5px;">
+                    Setup-Anleitung für dauerhaftes Hosting
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+
+    <!-- Export und Druck Optionen -->
+    <table width="100%" class="no-print">
+        <tr>
+            <th colspan="3">📄 Dokument exportieren</th>
+        </tr>
+        <tr>
+            <td width="33%" class="center">
+                <button onclick="dokumentDrucken()" class="header-button">
+                    🖨️ Drucken / Druckvorschau
+                </button>
+            </td>
+            <td width="33%" class="center">
+                <button onclick="pdfErstellen()" class="pdf-button">
+                    📄 PDF erstellen
+                </button>
+            </td>
+            <td width="33%" class="center">
+                <button onclick="htmlExportieren()" class="warning-button">
+                    💾 HTML exportieren
+                </button>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+
+    <!-- Kategorien Container -->
+    <div id="kategorien-container">
+        <!-- Kategorien werden hier eingefügt -->
+    </div>
+
+    <!-- Neue Kategorie hinzufügen -->
+    <table width="100%" class="no-print">
+        <tr>
+            <th colspan="2">Neue Kategorie hinzufügen</th>
+        </tr>
+        <tr>
+            <td width="70%">
+                <input type="text" id="neue-kategorie" placeholder="Name der neuen Kategorie">
+            </td>
+            <td width="30%" class="center">
+                <button onclick="kategorieHinzufuegen()" class="success-button">
+                    Hinzufügen
+                </button>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+
+    <!-- Fußzeile -->
+    <table width="100%">
+        <tr>
+            <td class="center small">
+                <div id="footer-info">Firma</div>
+                Seite 1 - Erstellt mit iSFP GitHub Pages App
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        'use strict';
+       
+        // ========================
+        // GLOBALE VARIABLEN
+        // ========================
+       
+        var kategorieZaehler = 0;
+        var installPrompt = null;
+        var isOnline = navigator.onLine;
+       
+        var standardKategorien = [
+            'Ansicht Nord', 'Ansicht Süd', 'Ansicht West', 'Ansicht Ost',
+            'Außenwand Nord', 'Außenwand Süd', 'Außenwand West', 'Außenwand Ost',
+            'Fenster Nord', 'Fenster Süd', 'Fenster West', 'Fenster Ost'
+        ];
+
+        // ========================
+        // SERVICE WORKER & OFFLINE
+        // ========================
+       
+        function initServiceWorker() {
+            if ('serviceWorker' in navigator && location.protocol !== 'blob:') {
+                try {
+                    var swCode = `
+                        const CACHE_NAME = 'isfp-github-pages-v1';
+                        const urlsToCache = [
+                            './',
+                            './index.html',
+                            'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js',
+                            'https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js'
+                        ];
+
+                        self.addEventListener('install', event => {
+                            event.waitUntil(
+                                caches.open(CACHE_NAME).then(cache => {
+                                    return cache.addAll(urlsToCache).catch(() => {
+                                        console.log('Cache-Fehler, aber App funktioniert weiter');
+                                        return Promise.resolve();
+                                    });
+                                })
+                            );
+                        });
+
+                        self.addEventListener('fetch', event => {
+                            event.respondWith(
+                                caches.match(event.request).then(response => {
+                                    return response || fetch(event.request).catch(() => {
+                                        return new Response('Offline - App funktioniert weiterhin', { 
+                                            status: 200,
+                                            headers: { 'Content-Type': 'text/plain' }
+                                        });
+                                    });
+                                }).catch(() => {
+                                    return fetch(event.request).catch(() => {
+                                        return new Response('Offline - App funktioniert weiterhin', { 
+                                            status: 200,
+                                            headers: { 'Content-Type': 'text/plain' }
+                                        });
+                                    });
+                                })
+                            );
+                        });
+                    `;
+                   
+                    var swBlob = new Blob([swCode], { type: 'application/javascript' });
+                    var swUrl = URL.createObjectURL(swBlob);
+                    navigator.serviceWorker.register(swUrl).then(function(registration) {
+                        console.log('✅ Service Worker registriert für GitHub Pages');
+                    }).catch(function(error) {
+                        console.log('⚠️ Service Worker nicht verfügbar:', error.message);
+                    });
+                } catch (error) {
+                    console.log('⚠️ Service Worker nicht unterstützt:', error.message);
+                }
+            }
+        }
+
+        // ========================
+        // QR CODE & SHARING FUNKTIONEN
+        // ========================
+        
+        function generateQRCode() {
+            try {
+                var currentURL = window.location.href;
+                document.getElementById('current-url').textContent = currentURL;
+                
+                var canvas = document.getElementById('qr-canvas');
+                
+                // QRious verwenden für QR-Code Generation
+                if (typeof QRious !== 'undefined') {
+                    var qr = new QRious({
+                        element: canvas,
+                        value: currentURL,
+                        size: 200,
+                        level: 'M'
+                    });
+                    
+                    document.getElementById('qr-container').style.display = 'block';
+                    showMessage('✅ QR-Code erstellt! Perfekt für GitHub Pages Sharing.', 'success');
+                } else {
+                    // Fallback ohne QRious
+                    canvas.width = 200;
+                    canvas.height = 50;
+                    var ctx = canvas.getContext('2d');
+                    ctx.fillStyle = '#000';
+                    ctx.font = '12px Arial';
+                    ctx.fillText('QR-Code Bibliothek lädt...', 10, 25);
+                    ctx.fillText('URL: ' + currentURL, 10, 40);
+                    
+                    document.getElementById('qr-container').style.display = 'block';
+                    showMessage('⚠️ QR-Code wird geladen...', 'info');
+                }
+            } catch (error) {
+                showMessage('❌ QR-Code Fehler: ' + error.message, 'error');
+            }
+        }
+        
+        function hideQRCode() {
+            document.getElementById('qr-container').style.display = 'none';
+        }
+        
+        function copyURL() {
+            var currentURL = window.location.href;
+            
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(currentURL).then(function() {
+                    showMessage('✅ URL wurde in die Zwischenablage kopiert!', 'success');
+                }).catch(function() {
+                    fallbackCopyURL(currentURL);
+                });
+            } else {
+                fallbackCopyURL(currentURL);
+            }
+        }
+        
+        function fallbackCopyURL(url) {
+            var textArea = document.createElement('textarea');
+            textArea.value = url;
+            textArea.style.position = 'fixed';
+            textArea.style.top = '0';
+            textArea.style.left = '0';
+            textArea.style.width = '2em';
+            textArea.style.height = '2em';
+            textArea.style.padding = '0';
+            textArea.style.border = 'none';
+            textArea.style.outline = 'none';
+            textArea.style.boxShadow = 'none';
+            textArea.style.background = 'transparent';
+            
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                var successful = document.execCommand('copy');
+                if (successful) {
+                    showMessage('✅ URL wurde kopiert!', 'success');
+                } else {
+                    showMessage('⚠️ Kopieren nicht möglich. URL: ' + url, 'info');
+                }
+            } catch (err) {
+                showMessage('⚠️ Kopieren nicht möglich. URL: ' + url, 'info');
+            }
+            
+            document.body.removeChild(textArea);
+        }
+        
+        function githubGuide() {
+            var guideHTML = `
+                <div style="text-align: left; max-width: 600px; margin: 0 auto;">
+                    <h3>🐙 GitHub Pages Setup-Anleitung</h3>
+                    
+                    <h4>📋 Schritt-für-Schritt:</h4>
+                    <ol>
+                        <li><strong>GitHub Account erstellen</strong> (falls noch nicht vorhanden)</li>
+                        <li><strong>Neues Repository erstellen:</strong>
+                            <ul>
+                                <li>Name: z.B. "isfp-foto-app"</li>
+                                <li>Public Repository wählen</li>
+                                <li>"Add README" aktivieren</li>
+                            </ul>
+                        </li>
+                        <li><strong>Diese HTML-Datei hochladen:</strong>
+                            <ul>
+                                <li>Datei als "index.html" speichern</li>
+                                <li>Per Drag & Drop ins Repository</li>
+                            </ul>
+                        </li>
+                        <li><strong>GitHub Pages aktivieren:</strong>
+                            <ul>
+                                <li>Repository → Settings → Pages</li>
+                                <li>Source: "Deploy from a branch"</li>
+                                <li>Branch: "main" auswählen</li>
+                                <li>Folder: "/ (root)" auswählen</li>
+                                <li>"Save" klicken</li>
+                            </ul>
+                        </li>
+                        <li><strong>Fertig!</strong> App ist verfügbar unter:<br>
+                            <code>https://[username].github.io/[repository-name]</code>
+                        </li>
+                    </ol>
+                    
+                    <h4>✨ Vorteile:</h4>
+                    <ul>
+                        <li>✅ <strong>Kostenlos</strong> und dauerhaft</li>
+                        <li>✅ <strong>Keine Anmeldung</strong> für Nutzer nötig</li>
+                        <li>✅ <strong>PWA-Installation</strong> auf allen Geräten</li>
+                        <li>✅ <strong>Vollständig offline</strong> nach Installation</li>
+                        <li>✅ <strong>QR-Code Sharing</strong> für einfache Weitergabe</li>
+                        <li>✅ <strong>Automatische Updates</strong> bei Code-Änderungen</li>
+                    </ul>
+                    
+                    <h4>📱 Nutzer-Workflow:</h4>
+                    <ol>
+                        <li>QR-Code scannen oder Link öffnen</li>
+                        <li>"Zum Startbildschirm hinzufügen" (wird automatisch angeboten)</li>
+                        <li>App wie native App verwenden</li>
+                        <li>Funktioniert komplett offline</li>
+                    </ol>
+                </div>
+            `;
+            
+            showMessageLarge(guideHTML, 'github');
+        }
+
+        // ========================
+        // PWA INSTALLATION
+        // ========================
+       
+        window.addEventListener('beforeinstallprompt', function(e) {
+            e.preventDefault();
+            installPrompt = e;
+            document.getElementById('install-row').style.display = '';
+        });
+       
+        function installApp() {
+            if (installPrompt) {
+                installPrompt.prompt();
+                installPrompt.userChoice.then(function(result) {
+                    if (result.outcome === 'accepted') {
+                        showMessage('✅ App erfolgreich installiert! Funktioniert jetzt wie eine native App.', 'success');
+                    }
+                    installPrompt = null;
+                    document.getElementById('install-row').style.display = 'none';
+                });
+            } else {
+                showMessage('ℹ️ Installation bereits verfügbar oder von Browser nicht unterstützt.', 'info');
+            }
+        }
+       
+        function hideInstallPrompt() {
+            document.getElementById('install-row').style.display = 'none';
+        }
+
+        // ========================
+        // ONLINE/OFFLINE STATUS
+        // ========================
+       
+        function updateOnlineStatus() {
+            var indicator = document.getElementById('offline-status');
+            var statusText = document.getElementById('connection-status');
+           
+            isOnline = navigator.onLine;
+           
+            if (isOnline) {
+                indicator.className = 'offline-indicator online-indicator';
+                indicator.innerHTML = 'ONLINE';
+                statusText.innerHTML = 'Online - GitHub Pages bereit für Synchronisation';
+            } else {
+                indicator.className = 'offline-indicator';
+                indicator.innerHTML = 'OFFLINE';
+                statusText.innerHTML = 'Offline-Modus - App funktioniert weiterhin vollständig';
+            }
+           
+            indicator.style.display = 'block';
+            setTimeout(function() {
+                indicator.style.display = 'none';
+            }, 3000);
+        }
+       
+        window.addEventListener('online', updateOnlineStatus);
+        window.addEventListener('offline', updateOnlineStatus);
+
+        // ========================
+        // NACHRICHTEN SYSTEM
+        // ========================
+       
+        function showMessage(text, type) {
+            type = type || 'info';
+            var className = 'status-box';
+           
+            if (type === 'error') {
+                className = 'status-box error-box';
+            } else if (type === 'success') {
+                className = 'status-box success-box';
+            } else if (type === 'github') {
+                className = 'status-box github-box';
+            }
+           
+            var messageDiv = document.createElement('div');
+            messageDiv.className = className;
+            messageDiv.innerHTML = '<strong>' + text + '</strong>';
+            messageDiv.style.position = 'fixed';
+            messageDiv.style.top = '50px';
+            messageDiv.style.left = '50%';
+            messageDiv.style.transform = 'translateX(-50%)';
+            messageDiv.style.zIndex = '1001';
+            messageDiv.style.maxWidth = '80%';
+           
+            document.body.appendChild(messageDiv);
+           
+            setTimeout(function() {
+                if (messageDiv.parentNode) {
+                    messageDiv.parentNode.removeChild(messageDiv);
+                }
+            }, 3000);
+        }
+        
+        function showMessageLarge(html, type) {
+            type = type || 'info';
+            var className = 'status-box';
+           
+            if (type === 'github') {
+                className = 'status-box github-box';
+            }
+           
+            var overlay = document.createElement('div');
+            overlay.style.position = 'fixed';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100%';
+            overlay.style.height = '100%';
+            overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+            overlay.style.zIndex = '2000';
+            overlay.style.display = 'flex';
+            overlay.style.alignItems = 'center';
+            overlay.style.justifyContent = 'center';
+            overlay.style.padding = '20px';
+            overlay.style.boxSizing = 'border-box';
+            
+            var messageDiv = document.createElement('div');
+            messageDiv.className = className;
+            messageDiv.innerHTML = html + '<br><br><button onclick="this.parentNode.parentNode.remove()" class="header-button">Schließen</button>';
+            messageDiv.style.maxWidth = '90%';
+            messageDiv.style.maxHeight = '90%';
+            messageDiv.style.overflow = 'auto';
+            messageDiv.style.position = 'relative';
+            
+            overlay.appendChild(messageDiv);
+            document.body.appendChild(overlay);
+            
+            overlay.onclick = function(e) {
+                if (e.target === overlay) {
+                    overlay.remove();
+                }
+            };
+        }
+
+        // ========================
+        // INITIALISIERUNG
+        // ========================
+       
+        function init() {
+            // Dark Mode Detection
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.classList.add('dark');
+            }
+           
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(event) {
+                if (event.matches) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            });
+           
+            // Aktuelles Datum setzen
+            var heute = new Date();
+            var dateString = heute.getFullYear() + '-' +
+                            ('0' + (heute.getMonth() + 1)).slice(-2) + '-' +
+                            ('0' + heute.getDate()).slice(-2);
+            document.getElementById('dokumentdatum').value = dateString;
+           
+            // Event Listener
+            document.getElementById('firmenname').addEventListener('input', headerAktualisieren);
+            document.getElementById('projektname').addEventListener('input', headerAktualisieren);
+            document.getElementById('dokumentdatum').addEventListener('input', headerAktualisieren);
+            document.getElementById('bearbeiter').addEventListener('input', headerAktualisieren);
+           
+            // Enter-Taste für neue Kategorie
+            document.getElementById('neue-kategorie').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    kategorieHinzufuegen();
+                }
+            });
+           
+            // Standard-Kategorien erstellen
+            for (var i = 0; i < standardKategorien.length; i++) {
+                kategorieErstellen(standardKategorien[i]);
+            }
+           
+            updateOnlineStatus();
+            
+            // GitHub Pages spezifische Initialisierung
+            if (window.location.hostname.includes('github.io')) {
+                showMessage('✅ GitHub Pages erkannt! App läuft perfekt als dauerhafter Service.', 'success');
+            }
+            
+            console.log('✅ iSFP GitHub Pages App initialisiert - Vollständig PWA-ready');
+        }
+
+        // ========================
+        // HEADER FUNKTIONEN
+        // ========================
+       
+        function headerAktualisieren() {
+            var firma = document.getElementById('firmenname').value || 'Firmenname';
+            var projekt = document.getElementById('projektname').value || 'Projektname';
+            var datum = document.getElementById('dokumentdatum').value;
+            var bearbeiter = document.getElementById('bearbeiter').value;
+           
+            document.getElementById('header-firma').textContent = firma;
+            document.getElementById('header-projekt').textContent = projekt;
+            document.getElementById('header-datum').textContent = 'Datum: ' + datum;
+            document.getElementById('header-bearbeiter').textContent = 'Bearbeiter: ' + bearbeiter;
+            document.getElementById('footer-info').textContent = firma;
+        }
+       
+        function logoHochladen(event) {
+            var file = event.target.files[0];
+            if (!file) return;
+           
+            if (!file.type.startsWith('image/')) {
+                showMessage('Bitte nur Bilddateien auswählen!', 'error');
+                return;
+            }
+           
+            if (file.size > 5 * 1024 * 1024) {
+                showMessage('Datei zu groß! Bitte unter 5MB bleiben.', 'error');
+                return;
+            }
+           
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var logoData = e.target.result;
+               
+                document.getElementById('logo-bild').src = logoData;
+                document.getElementById('logo-preview').style.display = 'block';
+                document.getElementById('header-logo-img').src = logoData;
+                document.getElementById('header-logo').style.display = 'block';
+               
+                showMessage('Logo erfolgreich hochgeladen', 'success');
+            };
+           
+            reader.onerror = function() {
+                showMessage('Fehler beim Laden des Logos!', 'error');
+            };
+           
+            reader.readAsDataURL(file);
+        }
+       
+        function logoEntfernen() {
+            if (confirm('Logo wirklich entfernen?')) {
+                document.getElementById('logo-preview').style.display = 'none';
+                document.getElementById('header-logo').style.display = 'none';
+                document.getElementById('firmenlogo').value = '';
+                showMessage('Logo entfernt', 'success');
+            }
+        }
+
+        // ========================
+        // KATEGORIEN FUNKTIONEN
+        // ========================
+       
+        function kategorieErstellen(name) {
+            kategorieZaehler++;
+            var kategorieId = 'kategorie-' + kategorieZaehler;
+           
+            var html =
+                '<table width="100%" id="' + kategorieId + '" style="margin-bottom: 20px;">' +
+                '<tr>' +
+                    '<th>' + escapeHtml(name) + '</th>' +
+                    '<td width="100" class="no-print">' +
+                        '<button onclick="kategorieLoeschen(\'' + kategorieId + '\')" class="delete-button">Löschen</button>' +
+                    '</td>' +
+                '</tr>' +
+                '<tr>' +
+                    '<td colspan="2" id="fotos-' + kategorieId + '">' +
+                        fotofeldErstellen(kategorieId, 1) +
+                    '</td>' +
+                '</tr>' +
+                '<tr class="no-print">' +
+                    '<td colspan="2" class="center">' +
+                        '<button onclick="fotoHinzufuegen(\'' + kategorieId + '\')" class="success-button">Weiteres Foto hinzufügen</button>' +
+                    '</td>' +
+                '</tr>' +
+                '</table>';
+           
+            document.getElementById('kategorien-container').innerHTML += html;
+        }
+       
+        function kategorieHinzufuegen() {
+            var name = document.getElementById('neue-kategorie').value.trim();
+            if (name) {
+                kategorieErstellen(name);
+                document.getElementById('neue-kategorie').value = '';
+                showMessage('Kategorie "' + name + '" hinzugefügt', 'success');
+            } else {
+                showMessage('Bitte einen Kategorienamen eingeben', 'error');
+            }
+        }
+       
+        function kategorieLoeschen(kategorieId) {
+            if (confirm('Kategorie wirklich löschen?')) {
+                var element = document.getElementById(kategorieId);
+                if (element) {
+                    element.remove();
+                    showMessage('Kategorie gelöscht', 'success');
+                }
+            }
+        }
+
+        // ========================
+        // FOTO FUNKTIONEN
+        // ========================
+       
+        function fotofeldErstellen(kategorieId, fotoNr) {
+            var fotofeldId = kategorieId + '-foto-' + fotoNr;
+           
+            return '<div class="foto-upload" id="' + fotofeldId + '">' +
+                   '<input type="file" accept="image/*" capture="camera" onchange="fotoHochladen(event, \'' + fotofeldId + '\')" style="display: none;" id="kamera-' + fotofeldId + '">' +
+                   '<input type="file" accept="image/*" onchange="fotoHochladen(event, \'' + fotofeldId + '\')" style="display: none;" id="galerie-' + fotofeldId + '">' +
+                   
+                   '<div id="upload-buttons-' + fotofeldId + '">' +
+                   '<h3>Foto ' + fotoNr + '</h3>' +
+                   '<button onclick="document.getElementById(\'kamera-' + fotofeldId + '\').click()" class="header-button">📷 Kamera öffnen</button>' +
+                   '<button onclick="document.getElementById(\'galerie-' + fotofeldId + '\').click()">📁 Aus Galerie</button>' +
+                   '</div>' +
+                   
+                   '<div id="foto-preview-' + fotofeldId + '" style="display: none;">' +
+                   '<img id="bild-' + fotofeldId + '" class="foto-preview" alt="Foto ' + fotoNr + '">' +
+                   '<br><button onclick="fotoEntfernen(\'' + fotofeldId + '\')" class="delete-button">Foto entfernen</button>' +
+                   '</div>' +
+                   
+                   '<br><strong>Anmerkung zu Foto ' + fotoNr + ':</strong><br>' +
+                   '<textarea id="anmerkung-' + fotofeldId + '" rows="3" placeholder="Anmerkungen zu diesem Foto..."></textarea>' +
+                   '</div>';
+        }
+       
+        function fotoHinzufuegen(kategorieId) {
+            var container = document.getElementById('fotos-' + kategorieId);
+            if (!container) return;
+           
+            var anzahl = container.getElementsByClassName('foto-upload').length + 1;
+            container.innerHTML += fotofeldErstellen(kategorieId, anzahl);
+            showMessage('Neues Foto-Feld hinzugefügt', 'success');
+        }
+       
+        function fotoHochladen(event, fotofeldId) {
+            var file = event.target.files[0];
+            if (!file) return;
+           
+            if (!file.type.startsWith('image/')) {
+                showMessage('Bitte nur Bilddateien auswählen!', 'error');
+                return;
+            }
+           
+            if (file.size > 10 * 1024 * 1024) {
+                showMessage('Datei zu groß! Bitte unter 10MB bleiben.', 'error');
+                return;
+            }
+           
+            var uploadButtons = document.getElementById('upload-buttons-' + fotofeldId);
+            if (!uploadButtons) return;
+           
+            uploadButtons.innerHTML = '<div class="loading">📤 Foto wird geladen...</div>';
+           
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    var bildData = e.target.result;
+                   
+                    var bildElement = document.getElementById('bild-' + fotofeldId);
+                    var previewElement = document.getElementById('foto-preview-' + fotofeldId);
+                   
+                    if (bildElement && previewElement) {
+                        bildElement.src = bildData;
+                        previewElement.style.display = 'block';
+                        uploadButtons.style.display = 'none';
+                       
+                        // Foto-Daten speichern
+                        var fotofeld = document.getElementById(fotofeldId);
+                        if (fotofeld) {
+                            fotofeld.setAttribute('data-bild', bildData);
+                            fotofeld.setAttribute('data-datei', file.name);
+                        }
+                       
+                        showMessage('Foto erfolgreich geladen', 'success');
+                    }
+                } catch (error) {
+                    showMessage('Fehler beim Verarbeiten des Fotos', 'error');
+                    uploadButtons.innerHTML = '<button onclick="document.getElementById(\'kamera-' + fotofeldId + '\').click()" class="header-button">📷 Kamera öffnen</button>' +
+                                             '<button onclick="document.getElementById(\'galerie-' + fotofeldId + '\').click()">📁 Aus Galerie</button>';
+                }
+            };
+           
+            reader.onerror = function() {
+                showMessage('Fehler beim Laden des Fotos!', 'error');
+                uploadButtons.innerHTML = '<button onclick="document.getElementById(\'kamera-' + fotofeldId + '\').click()" class="header-button">📷 Kamera öffnen</button>' +
+                                         '<button onclick="document.getElementById(\'galerie-' + fotofeldId + '\').click()">📁 Aus Galerie</button>';
+            };
+           
+            reader.readAsDataURL(file);
+        }
+       
+        function fotoEntfernen(fotofeldId) {
+            if (confirm('Foto wirklich entfernen?')) {
+                var previewElement = document.getElementById('foto-preview-' + fotofeldId);
+                var uploadButtons = document.getElementById('upload-buttons-' + fotofeldId);
+                var fotofeld = document.getElementById(fotofeldId);
+               
+                if (previewElement) previewElement.style.display = 'none';
+                if (uploadButtons) uploadButtons.style.display = 'block';
+               
+                if (fotofeld) {
+                    fotofeld.removeAttribute('data-bild');
+                    fotofeld.removeAttribute('data-datei');
+                }
+               
+                showMessage('Foto entfernt', 'success');
+            }
+        }
+
+        // ========================
+        // PDF EXPORT FUNKTIONEN
+        // ========================
+       
+        function pdfErstellen() {
+            try {
+                showMessage('PDF wird erstellt...', 'info');
+               
+                // jsPDF verwenden
+                var { jsPDF } = window.jspdf;
+                var doc = new jsPDF();
+               
+                var yPos = 20;
+                var margin = 20;
+                var pageWidth = doc.internal.pageSize.getWidth();
+                var pageHeight = doc.internal.pageSize.getHeight();
+               
+                // Titel
+                doc.setFontSize(16);
+                doc.setFont(undefined, 'bold');
+                var firmenname = document.getElementById('firmenname').value || 'Firmenname';
+                doc.text(firmenname, pageWidth / 2, yPos, { align: 'center' });
+                yPos += 10;
+               
+                doc.setFontSize(14);
+                doc.text('iSFP Foto-Dokumentation', pageWidth / 2, yPos, { align: 'center' });
+                yPos += 10;
+               
+                var projektname = document.getElementById('projektname').value || 'Projektname';
+                doc.setFont(undefined, 'normal');
+                doc.text(projektname, pageWidth / 2, yPos, { align: 'center' });
+                yPos += 15;
+               
+                // Projektdaten
+                doc.setFontSize(10);
+                var datum = document.getElementById('dokumentdatum').value;
+                var bearbeiter = document.getElementById('bearbeiter').value;
+                doc.text('Datum: ' + datum, margin, yPos);
+                doc.text('Bearbeiter: ' + bearbeiter, pageWidth - margin - 80, yPos);
+                yPos += 20;
+               
+                // Kategorien durchgehen
+                var kategorieElemente = document.querySelectorAll('#kategorien-container table');
+                for (var i = 0; i < kategorieElemente.length; i++) {
+                    var kategorie = kategorieElemente[i];
+                    var nameElement = kategorie.querySelector('th');
+                    if (!nameElement) continue;
+                   
+                    var kategorieName = nameElement.textContent;
+                   
+                    // Neue Seite wenn nötig
+                    if (yPos > pageHeight - 50) {
+                        doc.addPage();
+                        yPos = 20;
+                    }
+                   
+                    // Kategorie Titel
+                    doc.setFontSize(12);
+                    doc.setFont(undefined, 'bold');
+                    doc.text(kategorieName, margin, yPos);
+                    yPos += 15;
+                   
+                    // Fotos in dieser Kategorie
+                    var fotoFelder = kategorie.querySelectorAll('.foto-upload');
+                    var fotoNr = 0;
+                   
+                    for (var j = 0; j < fotoFelder.length; j++) {
+                        var feld = fotoFelder[j];
+                        var bildData = feld.getAttribute('data-bild');
+                       
+                        if (bildData) {
+                            fotoNr++;
+                           
+                            // Neue Seite wenn nötig (für Foto + Text)
+                            if (yPos > pageHeight - 120) {
+                                doc.addPage();
+                                yPos = 20;
+                            }
+                           
+                            doc.setFont(undefined, 'normal');
+                            doc.setFontSize(10);
+                            doc.text('Foto ' + fotoNr + ':', margin, yPos);
+                            yPos += 10;
+                           
+                            try {
+                                // Bild hinzufügen
+                                var imgWidth = 80;
+                                var imgHeight = 60;
+                                doc.addImage(bildData, 'JPEG', margin, yPos, imgWidth, imgHeight);
+                                yPos += imgHeight + 5;
+                               
+                                // Anmerkung
+                                var anmerkungId = 'anmerkung-' + feld.id;
+                                var anmerkungElement = document.getElementById(anmerkungId);
+                                var anmerkung = anmerkungElement ? anmerkungElement.value : '';
+                               
+                                if (anmerkung) {
+                                    doc.setFontSize(9);
+                                    // Text umbrechen
+                                    var textLines = doc.splitTextToSize('Anmerkung: ' + anmerkung, pageWidth - 2 * margin);
+                                    doc.text(textLines, margin, yPos);
+                                    yPos += textLines.length * 4;
+                                }
+                               
+                                yPos += 10; // Abstand zum nächsten Foto
+                            } catch (imgError) {
+                                console.log('Fehler beim Hinzufügen des Bildes:', imgError);
+                                doc.text('Bild konnte nicht hinzugefügt werden', margin, yPos);
+                                yPos += 10;
+                            }
+                        }
+                    }
+                   
+                    yPos += 5; // Abstand zur nächsten Kategorie
+                }
+               
+                // PDF speichern
+                var dateiName = 'iSFP_Dokumentation_' + 
+                               (projektname || 'Projekt').replace(/[^a-zA-Z0-9]/g, '_') + '_' +
+                               (datum || new Date().toISOString().split('T')[0]) + '.pdf';
+               
+                doc.save(dateiName);
+                showMessage('PDF erfolgreich erstellt: ' + dateiName, 'success');
+               
+            } catch (error) {
+                console.log('PDF Fehler:', error);
+                showMessage('Fehler beim PDF-Export: ' + error.message, 'error');
+            }
+        }
+
+        // ========================
+        // EXPORT FUNKTIONEN
+        // ========================
+       
+        function dokumentDrucken() {
+            // Alle no-print Elemente temporär ausblenden
+            var noPrintElements = document.querySelectorAll('.no-print');
+            for (var i = 0; i < noPrintElements.length; i++) {
+                noPrintElements[i].style.display = 'none';
+            }
+           
+            // Drucken
+            window.print();
+           
+            // no-print Elemente wieder anzeigen
+            for (var i = 0; i < noPrintElements.length; i++) {
+                noPrintElements[i].style.display = '';
+            }
+           
+            showMessage('Dokument wurde zum Drucken vorbereitet', 'success');
+        }
+       
+        function htmlExportieren() {
+            try {
+                var dokumentHtml = erstelleVollstaendigesDokument();
+                var blob = new Blob([dokumentHtml], { type: 'text/html;charset=utf-8' });
+                var url = URL.createObjectURL(blob);
+               
+                var projektname = document.getElementById('projektname').value || 'Projekt';
+                var dateiName = 'iSFP_Dokumentation_' + projektname.replace(/[^a-zA-Z0-9]/g, '_') + '_' +
+                               document.getElementById('dokumentdatum').value + '.html';
+               
+                var a = document.createElement('a');
+                a.href = url;
+                a.download = dateiName;
+                a.style.display = 'none';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+               
+                showMessage('HTML-Dokument wurde exportiert: ' + dateiName, 'success');
+            } catch (error) {
+                showMessage('Fehler beim HTML-Export: ' + error.message, 'error');
+            }
+        }
+       
+        function erstelleVollstaendigesDokument() {
+            var firmenname = document.getElementById('firmenname').value || 'Firma';
+            var projektname = document.getElementById('projektname').value || 'Projekt';
+            var dokumentdatum = document.getElementById('dokumentdatum').value || '';
+            var bearbeiter = document.getElementById('bearbeiter').value || '';
+           
+            var logoData = '';
+            var logoImg = document.getElementById('header-logo-img');
+            if (logoImg && logoImg.src && logoImg.style.display !== 'none') {
+                logoData = logoImg.src;
+            }
+           
+            var html = '<!DOCTYPE html><html lang="de"><head><meta charset="UTF-8">';
+            html += '<title>iSFP Dokumentation - ' + escapeHtml(projektname) + '</title>';
+            html += '<style>body{font-family:Arial,sans-serif;margin:20px;line-height:1.4;}';
+            html += 'table{border-collapse:collapse;width:100%;margin-bottom:20px;}';
+            html += 'td,th{border:1px solid #000;padding:8px;vertical-align:top;}';
+            html += 'th{background-color:#0066CC;color:white;text-align:center;}';
+            html += '.center{text-align:center;}.small{font-size:12px;color:#666;}';
+            html += '.foto{max-width:400px;max-height:300px;border:1px solid #666;}';
+            html += 'h1{color:#0066CC;text-align:center;}.anmerkung{margin-top:10px;font-style:italic;}';
+            html += '@media print{body{margin:0;}.foto{max-width:300px;max-height:200px;}}';
+            html += '</style></head><body>';
+           
+            // Header
+            html += '<table width="100%"><tr>';
+            if (logoData) {
+                html += '<td width="20%" class="center"><img src="' + logoData + '" style="max-height:80px;" alt="Logo"></td>';
+            }
+            html += '<td class="center"><h1>' + escapeHtml(firmenname) + '</h1>';
+            html += '<h2>iSFP Foto-Dokumentation</h2>';
+            html += '<div><strong>' + escapeHtml(projektname) + '</strong></div></td>';
+            html += '<td width="20%" class="center">';
+            html += '<div class="small">Datum: ' + escapeHtml(dokumentdatum) + '</div>';
+            html += '<div class="small">Bearbeiter: ' + escapeHtml(bearbeiter) + '</div>';
+            html += '</td></tr></table>';
+           
+            // Kategorien
+            var kategorieElemente = document.querySelectorAll('#kategorien-container table');
+            for (var i = 0; i < kategorieElemente.length; i++) {
+                var kategorie = kategorieElemente[i];
+                var nameElement = kategorie.querySelector('th');
+                if (!nameElement) continue;
+               
+                var kategorieName = nameElement.textContent;
+                html += '<h2>' + escapeHtml(kategorieName) + '</h2>';
+               
+                var fotoFelder = kategorie.querySelectorAll('.foto-upload');
+                var fotoNr = 0;
+               
+                for (var j = 0; j < fotoFelder.length; j++) {
+                    var feld = fotoFelder[j];
+                    var bildData = feld.getAttribute('data-bild');
+                   
+                    if (bildData) {
+                        fotoNr++;
+                        html += '<table width="100%"><tr><th>Foto ' + fotoNr + '</th></tr>';
+                        html += '<tr><td class="center">';
+                        html += '<img src="' + bildData + '" class="foto" alt="Foto ' + fotoNr + '">';
+                       
+                        var anmerkungId = 'anmerkung-' + feld.id;
+                        var anmerkungElement = document.getElementById(anmerkungId);
+                        var anmerkung = anmerkungElement ? anmerkungElement.value : '';
+                       
+                        if (anmerkung) {
+                            html += '<div class="anmerkung"><strong>Anmerkung:</strong> ' + escapeHtml(anmerkung) + '</div>';
+                        }
+                       
+                        html += '</td></tr></table>';
+                    }
+                }
+            }
+           
+            // Footer
+            html += '<div class="center small" style="margin-top:30px;">';
+            html += escapeHtml(firmenname) + ' - Erstellt mit iSFP GitHub Pages App';
+            html += '</div></body></html>';
+           
+            return html;
+        }
+
+        // ========================
+        // CLOUD-SYNCHRONISATION & PROJEKT-MANAGEMENT
+        // ========================
+        
+        function projektExportieren() {
+            var projektName = document.getElementById('projektname').value || 'Projekt_' + new Date().toLocaleDateString('de-DE');
+            var firmenname = document.getElementById('firmenname').value || 'Firma';
+            var heute = new Date();
+            
+            var projektData = {
+                id: Date.now(),
+                name: projektName,
+                timestamp: heute.toISOString(),
+                version: '2.0-github-pages',
+                exportedFor: 'GitHub Pages & Universal Cloud Storage',
+                platform: 'iSFP-GitHub-Pages-App',
+                created: heute.toLocaleDateString('de-DE') + ' ' + heute.toLocaleTimeString('de-DE'),
+                githubReady: true,
+                pwaCompatible: true,
+                metadata: {
+                    totalPhotos: getTotalPhotoCount(),
+                    categories: getCategoryCount(),
+                    fileSize: 'wird berechnet...',
+                    url: window.location.href
+                },
+                data: {
+                    firmenname: firmenname,
+                    projektname: projektName,
+                    dokumentdatum: document.getElementById('dokumentdatum').value,
+                    bearbeiter: document.getElementById('bearbeiter').value,
+                    logo: document.getElementById('header-logo-img').src || null,
+                    kategorien: sammelKategorienDaten()
+                }
+            };
+           
+            try {
+                var jsonString = JSON.stringify(projektData, null, 2);
+                var fileSizeMB = (new Blob([jsonString]).size / 1024 / 1024).toFixed(2);
+                projektData.metadata.fileSize = fileSizeMB + ' MB';
+                
+                // JSON neu erstellen mit korrekter Dateigröße
+                jsonString = JSON.stringify(projektData, null, 2);
+                var blob = new Blob([jsonString], { type: 'application/json;charset=utf-8' });
+                var url = URL.createObjectURL(blob);
+               
+                // Intelligenter Dateiname mit Zeitstempel
+                var dateiName = 'iSFP_GitHubPages_' + 
+                               firmenname.replace(/[^a-zA-Z0-9]/g, '_') + '_' +
+                               projektName.replace(/[^a-zA-Z0-9]/g, '_') + '_' +
+                               heute.toISOString().split('T')[0] + '_' +
+                               heute.toTimeString().split(':').slice(0,2).join('-') + '.json';
+               
+                var a = document.createElement('a');
+                a.href = url;
+                a.download = dateiName;
+                a.style.display = 'none';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+               
+                showMessage('✅ GitHub Pages Projekt exportiert!\n\n' +
+                           '📁 Datei: ' + dateiName + '\n' +
+                           '📊 Größe: ' + fileSizeMB + ' MB\n' +
+                           '📷 Fotos: ' + projektData.metadata.totalPhotos + '\n' +
+                           '📂 Kategorien: ' + projektData.metadata.categories + '\n\n' +
+                           '☁️ Perfekt für: GitHub, OneDrive, Google Drive, Dropbox, iCloud\n' +
+                           '🚀 GitHub Pages Ready!', 'success');
+                           
+            } catch (error) {
+                showMessage('❌ Fehler beim Export: ' + error.message, 'error');
+            }
+        }
+        
+        function projektImportieren() {
+            var input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            input.style.display = 'none';
+            
+            input.onchange = function(event) {
+                var file = event.target.files[0];
+                if (!file) return;
+                
+                if (!file.name.endsWith('.json')) {
+                    showMessage('❌ Bitte nur JSON-Projektdateien auswählen!', 'error');
+                    return;
+                }
+                
+                var fileSizeMB = (file.size / 1024 / 1024).toFixed(2);
+                showMessage('⏳ GitHub Pages Projekt wird geladen... (' + fileSizeMB + ' MB)', 'info');
+                
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    try {
+                        var projektData = JSON.parse(e.target.result);
+                        
+                        // Validierung der Projektdatei
+                        if (!projektData.data) {
+                            showMessage('❌ Ungültige Projektdatei! Fehlende Datenstruktur.', 'error');
+                            return;
+                        }
+                        
+                        if (!projektData.name) {
+                            showMessage('❌ Ungültige Projektdatei! Projektname fehlt.', 'error');
+                            return;
+                        }
+                        
+                        // Projekt laden
+                        ladeProjektDaten(projektData.data);
+                        
+                        var importInfo = '✅ GitHub Pages Projekt erfolgreich geladen!\n\n' +
+                                       '📁 Projekt: ' + projektData.name + '\n' +
+                                       '📅 Erstellt: ' + (projektData.created || 'Unbekannt') + '\n' +
+                                       '📊 Version: ' + (projektData.version || '1.0') + '\n' +
+                                       '🚀 GitHub Ready: ' + (projektData.githubReady ? 'Ja' : 'Nein') + '\n' +
+                                       '📱 PWA: ' + (projektData.pwaCompatible ? 'Ja' : 'Nein') + '\n';
+                        
+                        if (projektData.metadata) {
+                            importInfo += '📷 Fotos: ' + (projektData.metadata.totalPhotos || 'Unbekannt') + '\n' +
+                                        '📂 Kategorien: ' + (projektData.metadata.categories || 'Unbekannt') + '\n' +
+                                        '💾 Dateigröße: ' + (projektData.metadata.fileSize || fileSizeMB + ' MB');
+                        }
+                        
+                        showMessage(importInfo, 'success');
+                        
+                    } catch (error) {
+                        showMessage('❌ Fehler beim Import: ' + error.message + '\n\nStellen Sie sicher, dass die Datei eine gültige iSFP-Projektdatei ist.', 'error');
+                    }
+                };
+                
+                reader.onerror = function() {
+                    showMessage('❌ Fehler beim Lesen der Datei!', 'error');
+                };
+                
+                reader.readAsText(file);
+            };
+            
+            document.body.appendChild(input);
+            input.click();
+            document.body.removeChild(input);
+        }
+        
+        // Hilfsfunktionen für Metadaten
+        function getTotalPhotoCount() {
+            var count = 0;
+            var kategorieElemente = document.querySelectorAll('#kategorien-container table');
+            
+            for (var i = 0; i < kategorieElemente.length; i++) {
+                var fotoFelder = kategorieElemente[i].querySelectorAll('.foto-upload');
+                for (var j = 0; j < fotoFelder.length; j++) {
+                    if (fotoFelder[j].getAttribute('data-bild')) {
+                        count++;
+                    }
+                }
+            }
+            return count;
+        }
+        
+        function getCategoryCount() {
+            return document.querySelectorAll('#kategorien-container table').length;
+        }
+       
+        function sammelKategorienDaten() {
+            var kategorien = [];
+            var kategorieElemente = document.querySelectorAll('#kategorien-container table');
+           
+            for (var i = 0; i < kategorieElemente.length; i++) {
+                var kategorie = kategorieElemente[i];
+                var nameElement = kategorie.querySelector('th');
+                if (!nameElement) continue;
+               
+                var name = nameElement.textContent;
+                var fotos = [];
+               
+                var fotoFelder = kategorie.querySelectorAll('.foto-upload');
+                for (var j = 0; j < fotoFelder.length; j++) {
+                    var feld = fotoFelder[j];
+                    var bildData = feld.getAttribute('data-bild');
+                   
+                    if (bildData) {
+                        var anmerkungId = 'anmerkung-' + feld.id;
+                        var anmerkungElement = document.getElementById(anmerkungId);
+                        var anmerkung = anmerkungElement ? anmerkungElement.value : '';
+                       
+                        fotos.push({
+                            bild: bildData,
+                            datei: feld.getAttribute('data-datei') || 'foto.jpg',
+                            anmerkung: anmerkung
+                        });
+                    }
+                }
+               
+                kategorien.push({ name: name, fotos: fotos });
+            }
+           
+            return kategorien;
+        }
+       
+        function ladeProjektDaten(data) {
+            try {
+                // Formulardaten laden
+                document.getElementById('firmenname').value = data.firmenname || '';
+                document.getElementById('projektname').value = data.projektname || '';
+                document.getElementById('dokumentdatum').value = data.dokumentdatum || '';
+                document.getElementById('bearbeiter').value = data.bearbeiter || '';
+                
+                // Logo laden
+                if (data.logo) {
+                    document.getElementById('logo-bild').src = data.logo;
+                    document.getElementById('logo-preview').style.display = 'block';
+                    document.getElementById('header-logo-img').src = data.logo;
+                    document.getElementById('header-logo').style.display = 'block';
+                }
+               
+                headerAktualisieren();
+               
+                // Kategorien neu aufbauen
+                document.getElementById('kategorien-container').innerHTML = '';
+                kategorieZaehler = 0;
+               
+                if (data.kategorien && Array.isArray(data.kategorien)) {
+                    for (var i = 0; i < data.kategorien.length; i++) {
+                        var kat = data.kategorien[i];
+                        if (!kat.name) continue;
+                       
+                        kategorieErstellen(kat.name);
+                       
+                        // Fotos laden
+                        if (kat.fotos && Array.isArray(kat.fotos) && kat.fotos.length > 0) {
+                            var kategorieId = 'kategorie-' + kategorieZaehler;
+                            var container = document.getElementById('fotos-' + kategorieId);
+                            if (container) {
+                                container.innerHTML = '';
+                               
+                                for (var j = 0; j < kat.fotos.length; j++) {
+                                    var foto = kat.fotos[j];
+                                    if (!foto.bild) continue;
+                                   
+                                    container.innerHTML += fotofeldErstellen(kategorieId, j + 1);
+                                   
+                                    // Closure für verzögerte Ausführung
+                                    (function(fotofeldId, bildData, anmerkung, datei) {
+                                        setTimeout(function() {
+                                            var bildElement = document.getElementById('bild-' + fotofeldId);
+                                            var previewElement = document.getElementById('foto-preview-' + fotofeldId);
+                                            var uploadButtons = document.getElementById('upload-buttons-' + fotofeldId);
+                                            var anmerkungElement = document.getElementById('anmerkung-' + fotofeldId);
+                                            var fotofeld = document.getElementById(fotofeldId);
+                                           
+                                            if (bildElement && previewElement && uploadButtons && fotofeld) {
+                                                bildElement.src = bildData;
+                                                previewElement.style.display = 'block';
+                                                uploadButtons.style.display = 'none';
+                                               
+                                                if (anmerkungElement) {
+                                                    anmerkungElement.value = anmerkung || '';
+                                                }
+                                               
+                                                fotofeld.setAttribute('data-bild', bildData);
+                                                fotofeld.setAttribute('data-datei', datei || 'foto.jpg');
+                                            }
+                                        }, 100 + j * 50);
+                                    })(kategorieId + '-foto-' + (j + 1), foto.bild, foto.anmerkung, foto.datei);
+                                }
+                            }
+                        }
+                    }
+                }
+            } catch (error) {
+                showMessage('Fehler beim Laden der Projektdaten: ' + error.message, 'error');
+            }
+        }
+
+        // ========================
+        // UTILITY FUNKTIONEN
+        // ========================
+       
+        function escapeHtml(text) {
+            if (!text) return '';
+            var div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // ========================
+        // START DER ANWENDUNG
+        // ========================
+       
+        // Warten bis alles geladen ist
+        window.addEventListener('load', function() {
+            initServiceWorker();
+            setTimeout(init, 200);
+        });
+       
+        // Fehlerbehandlung
+        window.addEventListener('error', function(e) {
+            console.log('JavaScript Fehler:', e.error);
+            showMessage('Ein Fehler ist aufgetreten. Bitte Seite neu laden.', 'error');
+        });
+       
+        // Unhandled Promise Rejections
+        window.addEventListener('unhandledrejection', function(e) {
+            console.log('Unbehandelte Promise Ablehnung:', e.reason);
+            e.preventDefault();
+        });
+    </script>
+</body>
+</html>
